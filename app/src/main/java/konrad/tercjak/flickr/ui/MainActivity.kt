@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        currentQuery = savedInstanceState?.getString(PARAM_QUERY, null)
+        currentQuery = savedInstanceState.getString(PARAM_QUERY, null)
         fetchCurrentQuery()
     }
 

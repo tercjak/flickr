@@ -28,6 +28,7 @@ class PhotosAdapter(private val onClick: ((String) -> Unit)) : PagedListAdapter<
             Log.e("Conversion issue", "(  big problems")
         }
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoHolder {
         val inflater = LayoutInflater.from(parent.context)
         return PhotoHolder(inflater.inflate(R.layout.photo_item, null))
@@ -36,7 +37,6 @@ class PhotosAdapter(private val onClick: ((String) -> Unit)) : PagedListAdapter<
     override fun onBindViewHolder(holder: PhotoHolder, position: Int) {
         val photo: FlickrPhoto = getItem(position) ?: return
         val call = FlickrApi.getApi().getSizes(photo.id)
-
 
         call.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -73,9 +73,6 @@ class PhotosAdapter(private val onClick: ((String) -> Unit)) : PagedListAdapter<
 
         init {
             image = itemView.findViewById(R.id.image)
-            itemView.setOnClickListener {
-
-            }
         }
     }
 
